@@ -1,11 +1,13 @@
 package id.my.hendisantika.flink.job;
 
+import org.apache.flink.api.common.functions.FlatMapFunction;
 import org.apache.flink.api.java.ExecutionEnvironment;
 import org.apache.flink.api.java.operators.AggregateOperator;
 import org.apache.flink.api.java.operators.DataSource;
 import org.apache.flink.api.java.operators.FlatMapOperator;
 import org.apache.flink.api.java.operators.UnsortedGrouping;
 import org.apache.flink.api.java.tuple.Tuple2;
+import org.apache.flink.util.Collector;
 
 /**
  * Created by IntelliJ IDEA.
@@ -38,5 +40,20 @@ public class DataSetBatch {
 
         // Output
         sum.print();
+    }
+
+    public static class MyFlatMapper implements FlatMapFunction<String, Tuple2<String, Integer>> {
+        @Override
+        //value is input, out is output data
+        public void flatMap(String value, Collector<Tuple2<String, Integer>> out) throws Exception {
+            // Split words by spaces
+            String[] words = value.split(" ");
+            // Traverse all words, pack them into two-tuple outputs and convert words into (word, 1)
+            for (String word : words) {
+                Tuple2<String, Integer> wordTuple2 = Tuple2.of(word, 1);
+                //  Use Collector to send data downstream
+                out.collect(wordTuple2);
+            }
+        }
     }
 }
