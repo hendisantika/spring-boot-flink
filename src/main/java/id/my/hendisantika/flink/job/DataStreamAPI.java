@@ -25,7 +25,8 @@ public class DataStreamAPI {
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
 
         // Read data from the word.txt file in the data directory under the project root directory
-        DataStreamSource<String> source = env.readTextFile("D:\\IdeaProjects\\spring-boot-flink\\src\\main\\resources\\word.txt");
+//        DataStreamSource<String> source = env.readTextFile("D:\\IdeaProjects\\spring-boot-flink\\src\\main\\resources\\word.txt");
+        DataStreamSource<String> source = env.fromData("D:\\IdeaProjects\\spring-boot-flink\\src\\main\\resources\\word.txt");
 
         // Processing data: segmentation, conversion
         SingleOutputStreamOperator<Tuple2<String, Integer>> wordAndOneDS = source

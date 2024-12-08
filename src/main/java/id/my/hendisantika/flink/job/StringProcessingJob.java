@@ -38,6 +38,5 @@ public class StringProcessingJob {
 
         // Execute the job
         env.execute("String Processing Job");
-
     }
 }

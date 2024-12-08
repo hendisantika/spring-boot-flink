@@ -24,7 +24,8 @@ public class FlinkWebUI {
         // Local Mode
         Configuration conf = new Configuration();
         // Specifying Ports
-        conf.setString(RestOptions.BIND_PORT, "7777");
+//        conf.setString(RestOptions.BIND_PORT, "7777");
+        conf.setString(RestOptions.BIND_PORT.toString(), "7777");
         //  Creating an execution environment
         StreamExecutionEnvironment env = StreamExecutionEnvironment.createLocalEnvironmentWithWebUI(conf);
         // Globally specify the degree of parallelism, the default is the number of threads on the computer
