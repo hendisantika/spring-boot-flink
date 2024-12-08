@@ -1,5 +1,6 @@
 package id.my.hendisantika.flink;
 
+import id.my.hendisantika.flink.service.FlinkJobService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -11,7 +12,7 @@ public class SpringBootFlinkApplication {
 //        SpringApplication.run(SpringBootFlinkApplication.class, args);
         ConfigurableApplicationContext context = SpringApplication.run(SpringBootFlinkApplication.class, args);
 
-        // 获取 FlinkJobService Bean，并运行 Flink 作业
+        // Get the FlinkJobService Bean and run the Flink job
         FlinkJobService flinkJobService = context.getBean(FlinkJobService.class);
         try {
             flinkJobService.runFlinkJob();
