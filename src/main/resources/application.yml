@@ -1,0 +1,7 @@
+spring.application.name: spring-boot-flink
+server:
+  port: 8080
+
+flink:
+  job-manager-host: 172.24.4.193
+  job-manager-port: 8082
